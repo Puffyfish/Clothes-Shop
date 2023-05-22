@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+
+:root {
+  --primary: #780116;
+  --accent: #B71C1C;
+  --warn: #FFAB40;
+  --border: #8c2f39;
+  --input: #F1DFD7;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  background-color: #FFF8F5; // darker shade #FEECE3, almost grey #F1DFD7
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.matRole .mat-option-text {
+  height: 3em !important;
+  color: red;
+  background-color: #f8d19e;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+@import './assets/scss/index';

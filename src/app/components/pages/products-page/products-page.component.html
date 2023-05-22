@@ -1,0 +1,26 @@
+<!-- <div class="container"> -->
+<div class="product-item-container center-xy" *ngFor="let product of products">
+  <img [src]="product.image" [alt]="product.title">
+  <div class="details p-3">
+    <div class="header text-center">
+      <span class="name">{{ product.title }}</span>
+    </div>
+
+    <div class="description">
+      <p class="py-1"><b>Description:</b></p>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <div class="price">
+      <span>
+        {{ product.price | currency }}
+      </span>
+    </div>
+
+    <button mat-raised-button color="primary" class="p-1"
+    (click)="addToCart()">
+      Add to Cart
+    </button>
+  </div>
+</div>
+<!-- </div> -->

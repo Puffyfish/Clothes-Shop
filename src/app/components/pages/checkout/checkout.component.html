@@ -1,0 +1,42 @@
+<div class="center-xy mt-1 mb-1">
+  <div>
+    <app-title title="Order Form"></app-title>
+    <mat-card-content>
+      <form [formGroup]="checkoutForm"
+      (ngSubmit)="submit()">
+
+        <!-- NAME -->
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+
+        <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['name'].errors && fc['name'].touched">
+            <span *ngIf="fc['name'].errors['required']">Name is required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- ADDRESS -->
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+
+          <mat-error  class="errors"
+          *ngIf="fc['address'].errors && isSubmitted">
+            <span *ngIf="fc['address'].errors['required']">Address should not be empty.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </form>
+
+      <app-order-items [order]="order"></app-order-items>
+
+      <button mat-raised-button type="submit" class="mt-2"
+        (click)="createOrder()" color="primary">
+        Go To Payment
+      </button>
+      
+    </mat-card-content>
+  </div>
+</div>

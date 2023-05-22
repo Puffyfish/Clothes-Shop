@@ -1,0 +1,25 @@
+.dark-red {
+  background-color: #540804;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar-row button {
+  margin-right: 1rem;
+}
+
+a {
+  color: white;
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.second-row {
+  height: 3rem;
+}

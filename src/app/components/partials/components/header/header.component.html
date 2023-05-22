@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="dark-red">
+    <a routerLink="/">Little Red Closet</a>
+    <span class="example-spacer"></span>
+    <button mat-button
+      [matMenuTriggerFor]="belowMenu"
+      *ngIf="isAuth">
+      {{user.name}}
+    </button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item routerLink="/profile">Profile</button>
+      <button mat-menu-item routerLink="/orders">Orders</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+
+      <button mat-icon-button
+      *ngIf="!isAuth" [matMenuTriggerFor]="loginMenu">
+        <mat-icon>perm_identity</mat-icon>
+      </button>
+      <mat-menu #loginMenu="matMenu" yPosition="below">
+        <button mat-menu-item routerLink="/login">Login</button>
+        <button mat-menu-item routerLink="/register">Signup</button>
+      </mat-menu>
+
+
+    <button mat-icon-button
+    routerLink="/cart-page">
+      <mat-icon matBadge="{{ cartQuantity }}" matBadgeColor="warn">
+        shopping_cart
+      </mat-icon>
+    </button>
+
+    <button mat-button routerLink="/checkout">Checkout</button>
+  </mat-toolbar-row>
+
+  <!-- second row -->
+  <mat-toolbar-row class="second-row">
+
+    <!-- ALL Category -->
+    <button mat-button [matMenuTriggerFor]="categoryMenu">All</button>
+    <mat-menu #categoryMenu="matMenu" yPosition="below">
+      <button mat-menu-item *ngFor="let category of categories">{{category}}</button>
+    </mat-menu>
+
+    <!-- Women Category -->
+    <button mat-button routerLink="category/women">Women</button>
+
+    <!-- Men Category -->
+    <button mat-button routerLink="category/men">Men</button>
+
+    <!-- Accessories Category -->
+    <button mat-button routerLink="category/accessories">Accessories</button>
+
+    <!-- Electronics Category -->
+    <button mat-button routerLink="category/electronics">Electronics</button>
+
+  </mat-toolbar-row>
+</mat-toolbar>

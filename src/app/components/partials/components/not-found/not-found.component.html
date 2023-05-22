@@ -1,0 +1,9 @@
+<div *ngIf="visible" class="center-xy column">
+  <p>{{ notFoundMsg.toUpperCase() }}</p>
+  <button mat-raised-button
+    class="mt-1"
+    color="primary"
+    routerLink="{resetLinkRoute}">
+    {{ resetLinkText }}
+  </button>
+</div>

@@ -1,0 +1,51 @@
+<div class="center-xy">
+  <mat-card class="p-2">
+    <mat-card-title class="text-center">
+      <h2 class="mat-headline-4">Login</h2>
+    </mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()">
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+
+          <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['email'].errors && isSubmitted">
+            <span *ngIf="fc['email'].errors['required']">Email is required.</span>
+            <span *ngIf="fc['email'].errors['email']">Email is not correct.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field appearance="fill" class="test">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+
+          <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['password'].errors && isSubmitted">
+            <span *ngIf="fc['password'].errors['required']">Password should not be empty.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="center-xy">
+          <button type="submit" mat-raised-button color="primary"
+          [disabled]="!loginForm.valid">
+            Login
+          </button>
+        </div>
+
+        <div class="mt-1 text-center">
+          New User? &nbsp;
+          <a routerLink="/register" [queryParams]="{returnUrl: returnUrl}">Register Here</a>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

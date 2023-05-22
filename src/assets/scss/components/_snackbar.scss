@@ -1,0 +1,21 @@
+@import '../../../themes.scss';
+
+.snackbar-success {
+  .mdc-snackbar__surface {
+    background: map_get($my-success, 500)!important;
+
+    .mdc-button__label, .mdc-snackbar__label {
+      color: map_get($my-light, 50)!important;
+    }
+  }
+}
+
+.snackbar-error {
+  .mdc-snackbar__surface {
+    background: map_get($my-warn, 500)!important;
+
+    .mdc-button__label, .mdc-snackbar__label {
+      color: map_get($my-light, 50)!important;
+    }
+  }
+}

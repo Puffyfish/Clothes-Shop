@@ -1,0 +1,89 @@
+<div class="center-xy mt-1 mb-1">
+  <mat-card class="p-2">
+    <mat-card-title class="text-center mb-2">
+      <h2 class="mat-headline-4">Register</h2>
+    </mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="registerForm"
+      (ngSubmit)="submit()">
+
+        <!-- NAME -->
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+
+        <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['name'].errors && fc['name'].touched">
+            <span *ngIf="fc['name'].errors['required']">Name is required.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- EMAIL -->
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email">
+
+          <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['email'].errors && fc['email'].touched">
+            <span *ngIf="fc['email'].errors['required']">Email is required.</span>
+            <span *ngIf="fc['email'].errors['email']">Email is not correct.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- PASSWORD -->
+        <mat-form-field appearance="fill" class="test">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+
+          <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['password'] && (fc['password'].dirty || fc['password'].touched) && fc['password'].errors">
+            <span *ngIf="fc['password'].errors['required']">Password should not be empty.</span>
+            <span *ngIf="fc['password'].errors['minLength']">Password should be 8 or more characters.</span>
+
+          </mat-error>
+        </mat-form-field>
+
+        <!-- CONFIRM PASSWORD -->
+        <mat-form-field appearance="fill">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput type="password" formControlName="confirmPassword">
+
+          <!-- error message here -->
+          <mat-error  class="errors"
+          *ngIf="fc['confirmPassword'] && (fc['confirmPassword'].dirty || fc['confirmPassword'].touched) && fc['confirmPassword'].errors">
+            <span *ngIf="fc['confirmPassword'].errors['required']">Please confirm password.</span>
+            <span *ngIf="fc['confirmPassword'].errors['notMatch']">Passwords do not match.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- ADDRESS -->
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address">
+
+          <mat-error  class="errors"
+          *ngIf="fc['address'].errors && isSubmitted">
+            <span *ngIf="fc['address'].errors['required']">Address should not be empty.</span>
+          </mat-error>
+        </mat-form-field>
+
+        <div class="center-xy">
+          <button type="submit" mat-raised-button color="primary"
+          [disabled]="!registerForm.valid">
+            Register
+          </button>
+        </div>
+
+        <div class="mt-1 text-center">
+          Already a User? &nbsp;
+          <a routerLink="/login" [queryParams]="{returnUrl: returnUrl}">Login Here</a>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
